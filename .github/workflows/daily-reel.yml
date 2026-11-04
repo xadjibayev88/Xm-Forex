@@ -1,0 +1,63 @@
+name: Kunlik Reels (video yaratish va joylash)
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # har kuni 08:00 UTC = 13:00 Toshkent
+  workflow_dispatch:
+    inputs:
+      reel_index:
+        description: "Video raqami (0 dan boshlab). Bo'sh qoldirsangiz, bugungi navbat"
+        required: false
+        default: ""
+      dry_run:
+        description: "true = joylamasdan faqat video yaratish"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dasturlarni o'rnatish
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          pip install --quiet pillow
+      - name: Saytni tayyorlash
+        run: python3 scripts/build_site.py
+      - name: Videoni yaratish
+        env:
+          REEL_INDEX: ${{ github.event.inputs.reel_index }}
+        run: |
+          mkdir -p dist/reels work
+          python3 scripts/make_reel.py dist/reels/today.mp4 work/caption.txt
+          rm -rf dist/reels/_work_*
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Telegram va Instagram'ga joylash
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: |
+          BASE="${{ steps.deployment.outputs.page_url }}"
+          python3 scripts/post_reel.py "${BASE%/}/reels/today.mp4" work/caption.txt

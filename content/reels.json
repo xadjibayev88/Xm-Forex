@@ -1,0 +1,95 @@
+[
+  {
+    "id": "forex-nima",
+    "hook": "Forex tez boyish emas.",
+    "points": [
+      ["Valyutalar bozori", "EUR/USD kabi juftliklar narxi o'zgaradi"],
+      ["Foyda ham, zarar ham mumkin", "Savdogarlarning ko'pchiligi pul yo'qotadi"],
+      ["O'rganish shart", "Avval bilim, keyin pul"]
+    ]
+  },
+  {
+    "id": "spred",
+    "hook": "Savdoga kirishingiz bilan 2 pip minusdasiz.",
+    "points": [
+      ["Spred nima?", "Sotib olish (Ask) va sotish (Bid) narxi farqi"],
+      ["Misol", "Bid 1.1000, Ask 1.1002: spred 2 pip"],
+      ["Xulosa", "Ko'p savdo, ko'p xarajat"]
+    ]
+  },
+  {
+    "id": "5-xato",
+    "hook": "Forex'da boshlovchilar shu 5 ta xatoni qiladi.",
+    "points": [
+      ["Demo'siz haqiqiy pul", "Avval 2-4 hafta demo hisobda mashq qiling"],
+      ["Stop-loss qo'ymaslik", "Bitta xato butun hisobni yo'q qilishi mumkin"],
+      ["Haddan tashqari leverage", "Yelka foydani ham, zararni ham kattalashtiradi"],
+      ["Zararni darhol qaytarishga urinish", "Hissiyot bilan savdo qilmang, tanaffus qiling"],
+      ["Reja va jurnalsiz savdo", "Har savdoni yozib boring"]
+    ]
+  },
+  {
+    "id": "demo-hisob",
+    "hook": "Pul qo'ymasdan savdoni o'rganing.",
+    "points": [
+      ["Demo hisob", "Soxta pul, haqiqiy bozor sharoiti"],
+      ["2-4 hafta mashq qiling", "Buyurtma ochish va stop-loss qo'yishni o'rganing"],
+      ["Natijani yozib boring", "Keyin kichik summadan boshlang"]
+    ]
+  },
+  {
+    "id": "stop-loss",
+    "hook": "Bitta xato butun hisobni yo'q qilishi mumkin.",
+    "points": [
+      ["Stop-loss nima?", "Narx belgilangan darajaga yetsa, savdo avtomatik yopiladi"],
+      ["Qachon qo'yiladi?", "Savdoga kirishdan OLDIN"],
+      ["Nega kerak?", "U zararni cheklaydi"]
+    ]
+  },
+  {
+    "id": "1-2-foiz",
+    "hook": "500$ bilan bitta savdoda necha dollar yo'qotish mumkin?",
+    "points": [
+      ["1-2% qoidasi", "Bitta savdoda hisobning 1-2% idan ko'p emas"],
+      ["Misol", "500$ hisobda bitta savdodagi zarar 5-10$ gacha"],
+      ["Natija", "Ketma-ket xatolar ham hisobni yo'q qilmaydi"]
+    ]
+  },
+  {
+    "id": "leverage",
+    "hook": "100$ bilan 10 000$lik pozitsiya ochish mumkin. Lekin...",
+    "points": [
+      ["Leverage (yelka)", "1:100 yelkada 100$ bilan 10 000$lik savdo"],
+      ["Ikki tomonlama", "Foydani ham, zararni ham 100 baravar kattalashtiradi"],
+      ["Boshlovchiga", "Past yelka va kichik hajm"]
+    ]
+  },
+  {
+    "id": "aldovchilar",
+    "hook": "Kuniga 100$ va'dasini ko'rsangiz, qoching.",
+    "points": [
+      ["Kafolatli foiz", "Forexda hech kim foyda kafolatlamaydi"],
+      ["Pulingni menga ber", "Hisob parolini va pulni hech kimga topshirmang"],
+      ["Bilimsiz boylik", "Tez boyish va'dasi aldov belgisi"],
+      ["Shaxsiy xabarda pul so'rash", "Bunday odamlardan uzoqlashing"]
+    ]
+  },
+  {
+    "id": "kalendar",
+    "hook": "Bitta yangilik narxni 50 pipga sakratishi mumkin.",
+    "points": [
+      ["Iqtisodiy kalendar", "Foiz stavkasi, inflyatsiya, bandlik (NFP)"],
+      ["Qizil yangilik", "Spred kengayadi, narx sakraydi"],
+      ["Nima qilish kerak", "Ehtiyot bo'ling yoki savdo qilmang"]
+    ]
+  },
+  {
+    "id": "jurnal",
+    "hook": "Yo'qotishlaringizdan o'rganmasangiz, ularni takrorlaysiz.",
+    "points": [
+      ["Savdo jurnali", "Sana, juftlik, kirish sababi, stop-loss, natija"],
+      ["Hissiyotni yozing", "Xatolarning ko'pi hissiyotdan"],
+      ["Haftada bir tahlil", "Qaysi usul ishlayotganini ko'rasiz"]
+    ]
+  }
+]
