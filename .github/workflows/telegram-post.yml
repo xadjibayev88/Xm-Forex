@@ -1,0 +1,33 @@
+name: Telegram kunlik post
+
+on:
+  schedule:
+    - cron: "0 5 * * *" # har kuni 05:00 UTC = 10:00 Toshkent
+  workflow_dispatch:
+    inputs:
+      post_index:
+        description: "Post raqami (0 dan boshlab). Bo'sh qoldirsangiz, bugungi navbat"
+        required: false
+        default: ""
+      dry_run:
+        description: "true = yubormasdan faqat ko'rsatish"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Postni yuborish
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          AFFILIATE_LINK: ${{ vars.AFFILIATE_LINK }}
+          START_DATE: ${{ vars.START_DATE }}
+          POST_INDEX: ${{ github.event.inputs.post_index }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: python3 scripts/post_to_telegram.py
