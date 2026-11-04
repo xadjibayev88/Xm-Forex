@@ -3,5 +3,6 @@
   "telegram_url": "https://t.me/Apex_Trader_Uz",
   "telegram_chat_id": "@Apex_Trader_Uz",
   "button_text": "📈 Hisob ochish",
-  "start_date": "2026-11-03"
+  "start_date": "2026-11-03",
+  "admin_ids": []
 }

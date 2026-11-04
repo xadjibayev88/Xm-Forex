@@ -59,6 +59,18 @@ Video ovozsiz (musiqa yo'q). 10 ta mavzu aylanib turadi; yangi mavzu qo'shish uc
 
 Sinash: Actions → "Kunlik Reels" → Run workflow, `dry_run = true` (video yaratadi, joylamaydi).
 
+## Buyruqli Telegram bot (har soat, GitHub Actions)
+
+Workflow **"Telegram bot (buyruqlar, har soat)"** har soat boshida botga yozilgan yangi buyruqlarni o'qib, bajaradi. Bot 24/7 tinglamaydi: buyruqqa javob **soatgacha** kechikishi mumkin. Token sifatida mavjud `TELEGRAM_BOT_TOKEN` secret ishlatiladi.
+
+Buyruqlar: `/id`, `/help`, `/status`, `/stats` (kanal a'zolari soni), `/post [n]` (kanalga post), `/reel [n]` (video yaratib joylash).
+
+Sozlash:
+1. Botga Telegram'da `/id` deb yozing. Keyingi soatda bot ID'ingizni yuboradi (yoki Actions -> "Telegram bot" -> Run workflow bilan darhol ishga tushiring).
+2. Shu raqamni `config.json` dagi `admin_ids` ro'yxatiga yozing: `"admin_ids": [123456789]`. Faqat shu ro'yxatdagilar buyruq bera oladi.
+
+Muhim: bir bot tokenini buyruq tinglash uchun bir vaqtda faqat bitta joy ishlatishi mumkin. Termux'dagi bot shu token bilan ishlayotgan bo'lsa, ikkalasi to'qnashadi (Telegram 409 xato beradi). Termux'dagi botni to'xtating yoki GitHub'dagi bot uchun alohida token oling.
+
 ## Nima avtomatlashtirilmagan (va nega)
 - Boshqa kanallarga xabar yozish (o'zaro reklama), guruhlarda izoh qoldirish: ommaviy avtomatik yozish spam hisoblanadi va akkauntni bloklatadi.
 - Telegram taklif havolalarini yaratish va kanal tavsifini o'zgartirish: buni kanal egasi o'zi qiladi (matnlar tayyor hujjatda).

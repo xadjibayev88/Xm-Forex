@@ -1,0 +1,28 @@
+name: Telegram bot (buyruqlar, har soat)
+
+on:
+  schedule:
+    - cron: "0 * * * *" # har soat boshida
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write # /reel buyrug'i video workflow'ni ishga tushirishi uchun
+
+concurrency:
+  group: telegram-bot
+  cancel-in-progress: false
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buyruqlarni o'qish va bajarish
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/command_bot.py
