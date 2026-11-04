@@ -3,7 +3,7 @@
 Bu to'plam GitHub'ning o'zida ishlaydi:
 
 - **Sayt** (GitHub Pages): forex asoslari bo'yicha ta'limiy sahifa, hamkorlik havolangiz bilan.
-- **Telegram avtopost** (GitHub Actions): har kuni 10:00 (Toshkent) kanalingizga navbatdagi post ketadi.
+- **Telegram avtopost** (GitHub Actions): har kuni 11:00 (Toshkent) kanalingizga navbatdagi post ketadi.
 - **20 ta tayyor post** (`content/posts.json`) va **30 kunlik reja** (`content/content-plan.md`).
 
 > Bu to'plam sizning nomingizdan hech qaerga kirmaydi. Hamma narsa faqat sizning o'z Telegram botingiz va o'z GitHub repozitoriyangiz ichida ishlaydi.
@@ -22,20 +22,13 @@ GitHub'da yangi repo oching (masalan `forex-uz`) va shu papkadagi hamma fayllarn
 ### 3. GitHub sozlamalari
 Repo: **Settings → Secrets and variables → Actions**
 
-**Secrets** (yashirin):
+**Secret** (yashirin) — faqat bitta:
 
 | Nom | Qiymat |
 |---|---|
 | `TELEGRAM_BOT_TOKEN` | BotFather bergan token |
-| `TELEGRAM_CHAT_ID` | `@kanal_nomi` |
 
-**Variables** (ochiq):
-
-| Nom | Qiymat |
-|---|---|
-| `AFFILIATE_LINK` | XM partner panelidan olgan o'zingizning tracking havolangiz (`https://...`) |
-| `TELEGRAM_URL` | `https://t.me/kanal_nomi` |
-| `START_DATE` | masalan `2026-11-05` (birinchi post sanasi) |
+Qolgan sozlamalar (hamkorlik havolasi, kanal manzili, birinchi post sanasi) repo ichidagi `config.json` faylida turadi; ularni shu fayldan o'zgartirasiz. Xohlasangiz, `AFFILIATE_LINK`, `TELEGRAM_URL`, `TELEGRAM_CHAT_ID`, `START_DATE` nomli Secret/Variable yaratib, `config.json` qiymatlarini bekor qilishingiz ham mumkin.
 
 Tokenni hech qachon faylga yozmang va hech kimga bermang.
 

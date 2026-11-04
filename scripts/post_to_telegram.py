@@ -15,10 +15,18 @@ RISK_FOOTER = (
 )
 
 
+def load_config() -> dict:
+    path = Path("config.json")
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
 def main() -> int:
+    cfg = load_config()
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
-    link = os.environ.get("AFFILIATE_LINK", "").strip()
+    chat_id = (os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+               or str(cfg.get("telegram_chat_id", "")).strip())
+    link = (os.environ.get("AFFILIATE_LINK", "").strip()
+            or str(cfg.get("affiliate_link", "")).strip())
     dry_run = os.environ.get("DRY_RUN", "").strip().lower() == "true"
 
     posts = json.loads(Path("content/posts.json").read_text(encoding="utf-8"))
@@ -31,7 +39,10 @@ def main() -> int:
         idx = int(manual) % len(posts)
     else:
         start = datetime.strptime(
-            os.environ.get("START_DATE", "").strip() or "2026-11-05", "%Y-%m-%d"
+            os.environ.get("START_DATE", "").strip()
+            or str(cfg.get("start_date", "")).strip()
+            or "2026-11-05",
+            "%Y-%m-%d",
         ).date()
         today = datetime.now(timezone(timedelta(hours=5))).date()  # Toshkent vaqti
         days = (today - start).days
