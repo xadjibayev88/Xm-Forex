@@ -1,54 +1,28 @@
-# XM hamkor to'plami (GitHub orqali)
+# ApexTrader_Uz
 
-Bu to'plam GitHub'ning o'zida ishlaydi:
+Oltin (XAU/USD) va kriptovalyuta bozori bo'yicha kunlik tahlillar, grafiklar va moliyaviy yangiliklar. O'zbek tilida.
 
-- **Sayt** (GitHub Pages): forex asoslari bo'yicha ta'limiy sahifa, hamkorlik havolangiz bilan.
-- **Telegram avtopost** (GitHub Actions): har kuni 11:00 (Toshkent) kanalingizga navbatdagi post ketadi.
-- **20 ta tayyor post** (`content/posts.json`) va **30 kunlik reja** (`content/content-plan.md`).
+**Telegram kanal:** [t.me/Apex_Trader_Uz](https://t.me/Apex_Trader_Uz)
+**Aloqa:** [@ApexTrader_Uz](https://t.me/ApexTrader_Uz)
 
-> Bu to'plam sizning nomingizdan hech qaerga kirmaydi. Hamma narsa faqat sizning o'z Telegram botingiz va o'z GitHub repozitoriyangiz ichida ishlaydi.
+## Kanalda nima bor
 
-## O'rnatish (taxminan 15 daqiqa)
+- XAU/USD (oltin) bo'yicha texnik tahlil va muhim narx darajalari
+- Kripto bozori kuzatuvi (BTC, ETH va boshqalar)
+- Iqtisodiy yangiliklar kalendari va ularning bozorga ta'siri
+- Yangi boshlovchilar uchun qisqa tushuntirishlar
 
-### 1. Repo yarating
-GitHub'da yangi repo oching (masalan `forex-uz`) va shu papkadagi hamma fayllarni yuklang. Bepul tarifda GitHub Pages uchun repo **Public** bo'lishi kerak.
+## Kimlar uchun
 
-### 2. Telegram bot va kanal
-1. Telegram'da `@BotFather` ga yozing, `/newbot` buyrug'i bilan bot yarating va **token**ni oling.
-2. O'zingizning yangi kanalingizni oching (bolalar multfilm kanalidan alohida bo'lsin).
-3. Botni kanalga **administrator** qiling (xabar yuborish ruxsati bilan).
-4. Kanal ochiq bo'lsa, chat ID = `@kanal_nomi`.
+Forex va kripto bilan qiziqadigan, tahlilni o'zbek tilida o'qishni xohlaydigan treyderlar va yangi boshlovchilar uchun.
 
-### 3. GitHub sozlamalari
-Repo: **Settings → Secrets and variables → Actions**
+## Obuna bo'lish
 
-**Secret** (yashirin) — faqat bitta:
+1. Telegram'da [t.me/Apex_Trader_Uz](https://t.me/Apex_Trader_Uz) havolasini oching
+2. **Join** tugmasini bosing
 
-| Nom | Qiymat |
-|---|---|
-| `TELEGRAM_BOT_TOKEN` | BotFather bergan token |
+Sayt: https://xadjibayev88.github.io/Xm-Forex/
 
-Qolgan sozlamalar (hamkorlik havolasi, kanal manzili, birinchi post sanasi) repo ichidagi `config.json` faylida turadi; ularni shu fayldan o'zgartirasiz. Xohlasangiz, `AFFILIATE_LINK`, `TELEGRAM_URL`, `TELEGRAM_CHAT_ID`, `START_DATE` nomli Secret/Variable yaratib, `config.json` qiymatlarini bekor qilishingiz ham mumkin.
+## Ogohlantirish
 
-Tokenni hech qachon faylga yozmang va hech kimga bermang.
-
-### 4. Saytni yoqish
-**Settings → Pages → Source: GitHub Actions**. Keyin **Actions → "Saytni joylash" → Run workflow**. Tayyor bo'lgach sayt manzili shu yerda ko'rinadi.
-
-### 5. Telegram avtopostni sinash
-**Actions → "Telegram kunlik post" → Run workflow**:
-1. `dry_run = true` — yubormasdan postni ko'rsatadi.
-2. `dry_run = false`, `post_index = 0` — haqiqiy yuboradi.
-
-Shundan so'ng har kuni o'zi ishlaydi. Har postga xavf haqida ogohlantirish avtomatik qo'shiladi.
-
-## Postlarni o'zgartirish
-`content/posts.json` ni tahrirlang. `{LINK}` joyiga havolangiz avtomatik qo'yiladi. Post 4096 belgidan oshmasin.
-
-## Muhim qoidalar
-- **Foyda kafolatlamang**, «tez boyish» va'dasini bermang. Bu XM hamkorlik qoidalariga ham, reklama qonunlariga ham zid.
-- Rasmiy logotip va bannerlarni faqat partner panelidagi tayyor materiallardan oling; domen yoki kanal nomida «XM» ishlatmang, sayt mustaqil ekanini ochiq yozing (shablonda yozilgan).
-- O'zbekistonda va auditoriyangiz yashaydigan mamlakatlarda xorijiy brokerlar reklamasi bo'yicha qonunchilikni tekshiring.
-- Bolalar kontenti kanalingizda (Multiki_Pultiki) bu reklamani yuritmang.
-- Faqat o'zingiz bergan Telegram kanalga yuboring; begona guruhlarga spam qilmang.
-- GitHub 60 kun faolsiz repo'da rejalashtirilgan ishlarni o'chirib qo'yishi mumkin. Shunda Actions bo'limida qayta yoqing.
+Kanaldagi ma'lumotlar faqat ta'lim va axborot maqsadida beriladi va moliyaviy maslahat hisoblanmaydi. Forex va kripto savdosi yuqori xavf bilan bog'liq, kapitalingizning bir qismini yoki hammasini yo'qotishingiz mumkin. O'tgan natijalar kelajakdagi foydani kafolatlamaydi. Qaror qabul qilishdan oldin o'z tadqiqotingizni o'tkazing.
