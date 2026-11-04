@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Kunlik postni Telegram kanalga yuboradi (content/posts.json dan navbat bilan)."""
+import html
 import json
 import os
 import sys
@@ -13,6 +14,8 @@ RISK_FOOTER = (
     "\n\n⚠️ Forex va CFD savdosi yuqori xavf bilan bog'liq, "
     "mijozlarning katta qismi pul yo'qotadi. Bu moliyaviy maslahat emas."
 )
+CTA_LINE = "👇 Hisob ochish uchun tugmani bosing (hamkorlik havolasi)"
+DEFAULT_BUTTON = "📈 Hisob ochish"
 
 
 def load_config() -> dict:
@@ -51,29 +54,42 @@ def main() -> int:
             return 0
         idx = days % len(posts)
 
-    text = posts[idx]["text"]
-    if "{LINK}" in text:
-        if not link.startswith("https://"):
-            print("XATO: AFFILIATE_LINK repo variable belgilanmagan (https:// bilan boshlanishi kerak).")
-            return 1
-        text = text.replace("{LINK}", link)
-    text += RISK_FOOTER
+    if not link.startswith("https://"):
+        print("XATO: affiliate_link (config.json) yoki AFFILIATE_LINK belgilanmagan (https:// bilan boshlanishi kerak).")
+        return 1
 
-    if len(text) > 4096:
+    text = posts[idx]["text"].replace("{LINK}", link)
+    first, _, rest = text.partition("\n")
+    message = (
+        f"<b>{html.escape(first)}</b>\n{html.escape(rest)}"
+        f"\n\n{CTA_LINE}"
+        f"\n\n<i>{html.escape(RISK_FOOTER.strip())}</i>"
+    )
+    button = str(cfg.get("button_text", "")).strip() or DEFAULT_BUTTON
+    markup = json.dumps({"inline_keyboard": [[{"text": button, "url": link}]]})
+
+    if len(message) > 4096:
         print("XATO: post 4096 belgidan uzun.")
         return 1
 
-    print(f"Post #{idx} ({len(text)} belgi)")
+    print(f"Post #{idx} ({len(message)} belgi)")
     if dry_run:
         print("--- DRY RUN: yuborilmadi ---")
-        print(text)
+        print(message)
+        print(f"[Tugma: {button} -> {link}]")
         return 0
 
     if not token or not chat_id:
         print("XATO: TELEGRAM_BOT_TOKEN va TELEGRAM_CHAT_ID secrets belgilanmagan.")
         return 1
 
-    data = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode()
+    data = urllib.parse.urlencode({
+        "chat_id": chat_id,
+        "text": message,
+        "parse_mode": "HTML",
+        "reply_markup": markup,
+        "disable_web_page_preview": "true",
+    }).encode()
     req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data)
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
