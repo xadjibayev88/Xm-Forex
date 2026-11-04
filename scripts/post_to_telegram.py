@@ -61,9 +61,9 @@ def main() -> int:
     text = posts[idx]["text"].replace("{LINK}", link)
     first, _, rest = text.partition("\n")
     message = (
-        f"<b>{html.escape(first)}</b>\n{html.escape(rest)}"
+        f"<b>{html.escape(first, quote=False)}</b>\n{html.escape(rest, quote=False)}"
         f"\n\n{CTA_LINE}"
-        f"\n\n<i>{html.escape(RISK_FOOTER.strip())}</i>"
+        f"\n\n<i>{html.escape(RISK_FOOTER.strip(), quote=False)}</i>"
     )
     button = str(cfg.get("button_text", "")).strip() or DEFAULT_BUTTON
     markup = json.dumps({"inline_keyboard": [[{"text": button, "url": link}]]})
